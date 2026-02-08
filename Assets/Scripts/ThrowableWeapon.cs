@@ -66,9 +66,9 @@ public class ThrowableWeapon : MonoBehaviour
         ContactPoint contact = collision.contacts[0];
         transform.position = contact.point;
 
-        // Smooth rotation instead of snapping
+        // Set rotation directly
         Quaternion targetRot = Quaternion.LookRotation(-contact.normal) * Quaternion.Euler(rotationOffset, 0f, 0f);
-        StartCoroutine(SmoothStickRotation(targetRot));
+        transform.rotation = targetRot;
 
         FixedJoint joint = gameObject.AddComponent<FixedJoint>();
         joint.connectedBody = collision.rigidbody;
@@ -80,18 +80,4 @@ public class ThrowableWeapon : MonoBehaviour
         Destroy(gameObject, 20f);
     }
 
-    IEnumerator SmoothStickRotation(Quaternion targetRot)
-    {
-        Quaternion startRot = transform.rotation;
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime * 20f; // adjust speed if needed
-            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
-            yield return null;
-        }
-
-        transform.rotation = targetRot;
-    }
 }
