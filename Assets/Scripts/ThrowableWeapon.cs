@@ -57,27 +57,36 @@ public class ThrowableWeapon : MonoBehaviour
 
     void StickIntoTarget(Collision collision)
     {
-        hasStuck = true;
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            hasStuck = true;
 
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.useGravity = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = false;
 
-        ContactPoint contact = collision.contacts[0];
-        transform.position = contact.point;
+            ContactPoint contact = collision.contacts[0];
+            transform.position = contact.point;
 
-        // Set rotation directly
-        Quaternion targetRot = Quaternion.LookRotation(-contact.normal) * Quaternion.Euler(rotationOffset, 0f, 0f);
-        transform.rotation = targetRot;
+            // Set rotation directly
+            Quaternion targetRot = Quaternion.LookRotation(-contact.normal) * Quaternion.Euler(rotationOffset, 0f, 0f);
+            transform.rotation = targetRot;
 
-        FixedJoint joint = gameObject.AddComponent<FixedJoint>();
-        joint.connectedBody = collision.rigidbody;
+            FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+            joint.connectedBody = collision.rigidbody;
 
-        Collider col = GetComponent<Collider>();
-        if (col != null)
-            col.enabled = false;
+            Collider col = GetComponent<Collider>();
+            if (col != null)
+                col.enabled = false;
 
-        Destroy(gameObject, 20f);
+            Destroy(gameObject, 20f);
+        }else
+        {
+            Destroy(gameObject, 5f);
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+    
     }
 
 }
