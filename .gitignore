@@ -1,0 +1,88 @@
+# This file is used by Git to determine which files and folders to ignore in version control.
+# Uncomment patterns below to ignore the specified files.
+
+# ==============================
+# Unity generated
+# ==============================
+Library/
+Temp/
+obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+.vsconfig
+
+# ==============================
+# Visual Studio / MonoDevelop / Rider
+# ==============================
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.suo
+*.sln.DotSettings
+*.sln.DotSettings.user
+.idea/
+*.swp
+
+# ==============================
+# IDEs
+# ==============================
+.idea/
+.DS_Store
+*.swp
+*~
+
+# ==============================
+# OS generated
+# ==============================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Asset Store
+# ==============================
+Assets/AssetStoreTools*
+
+# ==============================
+# Local config files
+# ==============================
+ProjectSettings/EditorBuildSettings.asset.local
+ProjectSettings/ProjectSettings.asset.local
+
+# ==============================
+# Crash dumps
+# ==============================
+mono_crash.mem*
+*.StackTrace
+*.log
+
+# ==============================
+# Build artifacts
+# ==============================
+*.apk
+*.unitypackage
+*.exe
+*.app
+
+# ==============================
+# Jetbrains Rider
+# ==============================
+.idea/
+*.sln.iml
+Assets/Plugins/Editor/JetBrains*
+
+# ==============================
+# Cloud Build
+# ==============================
+fbl_build/
